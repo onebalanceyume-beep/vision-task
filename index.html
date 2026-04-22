@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="VISION">
-<meta name="theme-color" content="#F5A3A0">
+<meta name="theme-color" content="#B2261C">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -16,195 +16,205 @@
 <link rel="icon" type="image/png" href="icon-192.png">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;}
-html,body{height:100%;overflow:hidden;overscroll-behavior:none;background:#FFF9F7;}
-body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;color:#5A3A3A;user-select:none;-webkit-user-select:none;}
+html,body{height:100%;overflow:hidden;overscroll-behavior:none;background:#FAFAF7;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;color:#1d1d1f;user-select:none;-webkit-user-select:none;font-weight:500;letter-spacing:-0.2px;}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;font-size:inherit;}
-input,textarea,select{font-family:inherit;font-size:16px;-webkit-appearance:none;appearance:none;color:#5A3A3A;}
+input,textarea,select{font-family:inherit;font-size:16px;-webkit-appearance:none;appearance:none;color:#1d1d1f;}
 
 .app{display:flex;flex-direction:column;height:100vh;height:100dvh;}
 
-/* ビジョンバー - パステル化 */
-.vision-bar{background:linear-gradient(135deg, #F5A3A0 0%, #F7B8B3 100%);color:#fff;padding:env(safe-area-inset-top) 0 0;flex-shrink:0;box-shadow:0 2px 12px rgba(245,163,160,0.3);}
-.vision-bar-inner{padding:12px 16px;}
+/* ビジョンバー - オフホワイト＋赤縁 */
+.vision-bar{background:#FAFAF7;color:#1d1d1f;padding:env(safe-area-inset-top) 0 0;flex-shrink:0;border-bottom:2px solid #B2261C;}
+.vision-bar-inner{padding:16px 20px 14px;}
 .vision-top{display:flex;align-items:center;justify-content:space-between;gap:8px;}
-.vision-label{font-size:10px;letter-spacing:3px;opacity:0.95;font-weight:600;}
-.vision-main{font-size:14px;font-weight:700;margin-top:3px;line-height:1.4;text-shadow:0 1px 2px rgba(0,0,0,0.08);}
-.vision-goal{font-size:11px;opacity:0.95;margin-top:3px;font-weight:500;}
-.header-btns{display:flex;gap:5px;}
-.header-btns button{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.25);color:#fff;font-size:15px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px);}
-.sync-indicator{width:8px;height:8px;border-radius:50%;background:#FFD966;display:inline-block;margin-left:4px;animation:none;}
-.sync-indicator.syncing{background:#66D9A3;animation:pulse 1s infinite;}
-.sync-indicator.error{background:#FF8888;}
+.vision-label{font-size:10px;letter-spacing:3px;color:#B2261C;font-weight:700;}
+.vision-main{font-size:17px;font-weight:700;margin-top:5px;line-height:1.4;color:#1d1d1f;letter-spacing:-0.3px;}
+.vision-goal{font-size:12px;margin-top:6px;font-weight:600;color:#86868b;letter-spacing:0.3px;}
+.header-btns{display:flex;gap:6px;}
+.header-btns button{width:38px;height:38px;border-radius:50%;background:#fff;color:#B2261C;font-size:15px;font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid #e5e5e7;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.sync-indicator{width:8px;height:8px;border-radius:50%;background:#FFC107;display:inline-block;margin-left:6px;animation:none;}
+.sync-indicator.syncing{background:#34c759;animation:pulse 1s infinite;}
+.sync-indicator.error{background:#FF3B30;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
 
-/* ビュー切替 - パステル */
-.view-mode{display:flex;background:#fff;padding:8px 10px;gap:5px;border-bottom:1px solid #FFE4E1;flex-shrink:0;overflow-x:auto;}
+/* ビュー切替 - シャープ */
+.view-mode{display:flex;background:#FAFAF7;padding:12px 16px;gap:6px;border-bottom:0.5px solid #e5e5e7;flex-shrink:0;overflow-x:auto;}
 .view-mode::-webkit-scrollbar{display:none;}
-.view-mode button{flex-shrink:0;padding:8px 14px;border-radius:18px;background:#FFF0EE;color:#A66;font-size:12px;font-weight:600;transition:all 0.2s;}
-.view-mode button.active{background:linear-gradient(135deg, #F5A3A0, #F7B8B3);color:#fff;box-shadow:0 2px 8px rgba(245,163,160,0.35);}
+.view-mode button{flex-shrink:0;padding:9px 16px;border-radius:10px;background:#fff;color:#86868b;font-size:13px;font-weight:600;transition:all 0.15s;border:1px solid #e5e5e7;}
+.view-mode button.active{background:#B2261C;color:#fff;border-color:#B2261C;box-shadow:0 2px 6px rgba(178,38,28,0.25);}
 
 /* プロジェクトタブ */
-.tabs{background:#fff;padding:0 8px 10px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-shrink:0;border-bottom:1px solid #FFE4E1;}
+.tabs{background:#FAFAF7;padding:0 12px 12px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-shrink:0;border-bottom:0.5px solid #e5e5e7;}
 .tabs::-webkit-scrollbar{display:none;}
-.tabs-inner{display:flex;gap:6px;min-width:min-content;padding:8px 0 2px;}
-.tab{padding:8px 14px;border-radius:18px;background:#FFF5F3;font-size:12px;font-weight:600;white-space:nowrap;transition:all 0.15s;display:flex;align-items:center;gap:5px;color:#6B4848;border:2px solid transparent;}
-.tab .dot{width:9px;height:9px;border-radius:50%;}
-.tab.active{color:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);}
-.tab-add{padding:8px 13px;border-radius:18px;background:#FFF5F3;font-size:15px;font-weight:700;color:#F5A3A0;}
+.tabs-inner{display:flex;gap:7px;min-width:min-content;padding:10px 0 2px;}
+.tab{padding:8px 15px;border-radius:18px;background:#fff;font-size:12px;font-weight:600;white-space:nowrap;transition:all 0.15s;display:flex;align-items:center;gap:6px;color:#515154;border:1px solid #e5e5e7;}
+.tab .dot{width:8px;height:8px;border-radius:50%;}
+.tab.active{color:#fff;border-color:transparent;box-shadow:0 2px 8px rgba(0,0,0,0.08);}
+.tab-add{padding:8px 13px;border-radius:18px;background:#fff;font-size:16px;font-weight:600;color:#B2261C;border:1px solid #e5e5e7;}
 
 /* メイン */
-.main{flex:1;overflow:hidden;position:relative;background:#FFF9F7;}
+.main{flex:1;overflow:hidden;position:relative;background:#FAFAF7;}
 
 /* マインドマップ */
 .mindmap-wrap{position:absolute;inset:0;overflow:hidden;touch-action:none;}
 .mindmap{position:absolute;width:3500px;height:3500px;transform-origin:0 0;}
 .mindmap svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
-.node{position:absolute;padding:11px 15px;border-radius:16px;background:#fff;border:2px solid;min-width:120px;max-width:200px;text-align:center;cursor:pointer;touch-action:none;box-shadow:0 3px 12px rgba(180,120,120,0.15);font-size:13px;font-weight:600;line-height:1.35;pointer-events:auto;transition:transform 0.2s, opacity 0.2s, box-shadow 0.2s;}
-.node:hover{box-shadow:0 4px 16px rgba(180,120,120,0.25);}
-.node.vision{background:linear-gradient(135deg, #F5A3A0 0%, #F7B8B3 100%);color:#fff;border-color:#E88C88;padding:18px 22px;min-width:240px;box-shadow:0 4px 20px rgba(245,163,160,0.4);}
-.node.vision .v-label{font-size:9px;letter-spacing:3px;opacity:0.95;font-weight:700;}
-.node.vision .v-main{font-size:14px;font-weight:700;margin-top:4px;line-height:1.4;}
-.node.vision .v-goal{font-size:11px;margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.35);opacity:0.95;font-weight:600;}
-.node.project{font-size:14px;font-weight:700;padding:13px 18px;border-radius:18px;}
-.node.task .badges{display:flex;gap:3px;justify-content:center;margin-top:4px;flex-wrap:wrap;}
-.node.task .badge{font-size:9px;padding:2px 6px;border-radius:8px;font-weight:600;}
-.node.done{opacity:0.55;}
+.node{position:absolute;padding:12px 16px;border-radius:14px;background:#fff;border:1.5px solid;min-width:130px;max-width:210px;text-align:center;cursor:pointer;touch-action:none;box-shadow:0 1px 4px rgba(0,0,0,0.06);font-size:13px;font-weight:700;line-height:1.4;pointer-events:auto;transition:transform 0.2s, box-shadow 0.2s;color:#1d1d1f;}
+.node:hover{box-shadow:0 3px 10px rgba(0,0,0,0.1);}
+.node.vision{background:#fff;color:#1d1d1f;border:2.5px solid #B2261C;padding:18px 22px;min-width:250px;box-shadow:0 2px 12px rgba(178,38,28,0.15);}
+.node.vision .v-label{font-size:10px;letter-spacing:3px;color:#B2261C;font-weight:700;}
+.node.vision .v-main{font-size:15px;font-weight:700;margin-top:6px;line-height:1.4;color:#1d1d1f;letter-spacing:-0.3px;}
+.node.vision .v-goal{font-size:12px;margin-top:8px;padding-top:8px;border-top:1px solid #f0dad4;color:#86868b;font-weight:600;}
+.node.project{font-size:14px;font-weight:700;padding:13px 18px;border-radius:14px;}
+.node.task{color:#1d1d1f;font-weight:700;}
+.node.task .badges{display:flex;gap:4px;justify-content:center;margin-top:5px;flex-wrap:wrap;}
+.node.task .badge{font-size:10px;padding:3px 8px;border-radius:5px;font-weight:700;color:#fff;}
+.node.done{opacity:0.5;}
 .node.done .title-txt{text-decoration:line-through;}
-.node.doing{box-shadow:0 0 0 3px rgba(255,217,102,0.5), 0 3px 12px rgba(180,120,120,0.2);}
-.node.focused{box-shadow:0 0 0 4px #F5A3A0, 0 6px 20px rgba(245,163,160,0.4);transform:scale(1.08);}
-.node .pin{position:absolute;top:-6px;left:-6px;width:22px;height:22px;border-radius:50%;background:#FFD966;color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.15);}
-.node .due-soon{color:#E85D5A;font-weight:700;}
-.node .due-over{color:#fff;font-weight:700;background:#E85D5A;padding:2px 6px;border-radius:6px;}
+.node.doing{box-shadow:0 0 0 2px #FFC107, 0 2px 8px rgba(0,0,0,0.08);}
+.node.focused{box-shadow:0 0 0 3px #B2261C, 0 4px 16px rgba(178,38,28,0.25);transform:scale(1.08);}
+.node .pin{position:absolute;top:-7px;left:-7px;width:24px;height:24px;border-radius:50%;background:#FFC107;color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,0.15);font-weight:700;}
+.node .due-soon{color:#B2261C;font-weight:700;}
+.node .due-over{color:#fff;font-weight:700;background:#B2261C;padding:2px 7px;border-radius:5px;}
 .node .assignees{display:flex;gap:-4px;justify-content:center;margin-top:6px;}
-.node .avatar{width:22px;height:22px;border-radius:50%;font-size:10px;color:#fff;display:flex;align-items:center;justify-content:center;margin-left:-4px;border:2px solid #fff;font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,0.1);}
-.node .due{font-size:10px;margin-top:4px;opacity:0.85;font-weight:500;}
-.node .status-dot{position:absolute;top:-4px;right:-4px;width:13px;height:13px;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.1);}
-.node .status-dot.todo{background:#D9C7C0;}
-.node .status-dot.doing{background:#FFD966;}
-.node .status-dot.done{background:#A3D9B1;}
+.node .avatar{width:22px;height:22px;border-radius:50%;font-size:10px;color:#fff;display:flex;align-items:center;justify-content:center;margin-left:-4px;border:2px solid #fff;font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,0.12);}
+.node .due{font-size:11px;margin-top:5px;color:#515154;font-weight:600;}
+.node .status-dot{position:absolute;top:-5px;right:-5px;width:14px;height:14px;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.12);}
+.node .status-dot.todo{background:#86868b;}
+.node .status-dot.doing{background:#FFC107;}
+.node .status-dot.done{background:#34c759;}
 
-.zoom-ctrl{position:absolute;bottom:24px;right:16px;display:flex;flex-direction:column;gap:7px;z-index:10;}
-.zoom-ctrl button{width:46px;height:46px;border-radius:50%;background:#fff;box-shadow:0 3px 12px rgba(180,120,120,0.2);font-size:18px;font-weight:300;color:#F5A3A0;display:flex;align-items:center;justify-content:center;transition:all 0.15s;}
+.zoom-ctrl{position:absolute;bottom:26px;right:18px;display:flex;flex-direction:column;gap:8px;z-index:10;}
+.zoom-ctrl button{width:46px;height:46px;border-radius:50%;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.12);font-size:18px;font-weight:600;color:#B2261C;display:flex;align-items:center;justify-content:center;transition:all 0.15s;border:1px solid #e5e5e7;}
 .zoom-ctrl button:active{transform:scale(0.92);}
-.zoom-ctrl button.focus-mode{background:linear-gradient(135deg, #F5A3A0, #F7B8B3);color:#fff;}
 
 /* ミニマップ */
-.minimap{position:absolute;bottom:24px;left:16px;width:110px;height:80px;background:rgba(255,255,255,0.95);border:2px solid #F5A3A0;border-radius:10px;overflow:hidden;z-index:10;cursor:pointer;box-shadow:0 3px 12px rgba(180,120,120,0.2);display:none;}
+.minimap{position:absolute;bottom:26px;left:90px;width:120px;height:85px;background:rgba(255,255,255,0.98);border:2px solid #B2261C;border-radius:10px;overflow:hidden;z-index:10;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.12);display:none;}
 .minimap.show{display:block;}
 .minimap svg{width:100%;height:100%;}
-.minimap-view{fill:rgba(245,163,160,0.15);stroke:#F5A3A0;stroke-width:2;}
+.minimap-view{fill:rgba(178,38,28,0.12);stroke:#B2261C;stroke-width:3;}
 
-.link-mode-banner{position:absolute;top:14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg, #FFCE85, #FFD966);color:#8B5A1F;padding:10px 18px;border-radius:22px;font-size:13px;font-weight:700;z-index:10;box-shadow:0 3px 12px rgba(255,206,133,0.5);max-width:90%;text-align:center;}
+.link-mode-banner{position:absolute;top:14px;left:50%;transform:translateX(-50%);background:#fff;color:#B2261C;padding:11px 20px;border-radius:12px;font-size:13px;font-weight:700;z-index:10;box-shadow:0 4px 16px rgba(0,0,0,0.15);max-width:90%;text-align:center;border:2px solid #B2261C;}
 
 /* かんばん */
-.kanban{position:absolute;inset:0;display:flex;gap:12px;padding:14px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.kanban{position:absolute;inset:0;display:flex;gap:12px;padding:14px;overflow-x:auto;-webkit-overflow-scrolling:touch;background:#FAFAF7;}
 .kanban::-webkit-scrollbar{display:none;}
-.kanban-col{flex-shrink:0;width:290px;background:#FFF5F3;border-radius:16px;padding:12px;display:flex;flex-direction:column;max-height:100%;}
-.kanban-col h3{font-size:13px;font-weight:700;color:#6B4848;padding:4px 6px 10px;display:flex;align-items:center;gap:6px;}
-.kanban-col h3 .count{background:#fff;color:#F5A3A0;padding:2px 9px;border-radius:12px;font-size:11px;font-weight:700;}
+.kanban-col{flex-shrink:0;width:300px;background:#fff;border-radius:14px;padding:12px;display:flex;flex-direction:column;max-height:100%;border:1px solid #e5e5e7;}
+.kanban-col h3{font-size:13px;font-weight:700;color:#1d1d1f;padding:4px 6px 12px;display:flex;align-items:center;gap:8px;letter-spacing:0.3px;}
+.kanban-col h3 .status-mark{width:10px;height:10px;border-radius:50%;display:inline-block;}
+.kanban-col h3 .count{background:#FAFAF7;color:#86868b;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:700;margin-left:auto;border:1px solid #e5e5e7;}
 .kanban-list{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;display:flex;flex-direction:column;gap:8px;padding:2px;}
 .kanban-list::-webkit-scrollbar{display:none;}
-.kanban-card{background:#fff;border-radius:12px;padding:11px 13px;border-left:5px solid;box-shadow:0 2px 6px rgba(180,120,120,0.08);font-size:14px;font-weight:600;line-height:1.4;cursor:pointer;position:relative;transition:transform 0.15s;}
-.kanban-card:active{transform:scale(0.98);}
-.kanban-card.done{opacity:0.55;}
-.kanban-card .memo{font-size:12px;color:#8B6B6B;margin-top:4px;font-weight:400;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-.kanban-card .meta{display:flex;gap:6px;margin-top:6px;font-size:11px;color:#A88;flex-wrap:wrap;align-items:center;}
-.kanban-card .meta .tag{background:#FFF0EE;padding:3px 8px;border-radius:6px;font-size:10px;color:#A66;}
-.kanban-card .pin-mark{position:absolute;top:-5px;right:-5px;background:#FFD966;color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.1);}
+.kanban-card{background:#fff;border-radius:12px;padding:13px 15px;border:1px solid #e5e5e7;border-left:3px solid;box-shadow:0 1px 3px rgba(0,0,0,0.04);font-size:14px;font-weight:700;line-height:1.45;cursor:pointer;position:relative;color:#1d1d1f;}
+.kanban-card.done{opacity:0.55;background:#FAFAF7;}
+.kanban-card .memo{font-size:12px;color:#515154;margin-top:5px;font-weight:500;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.kanban-card .meta{display:flex;gap:5px;margin-top:8px;font-size:11px;color:#515154;flex-wrap:wrap;align-items:center;font-weight:600;}
+.kanban-card .meta .tag{background:#FAFAF7;padding:3px 8px;border-radius:5px;font-size:10px;color:#515154;font-weight:600;border:1px solid #e5e5e7;}
+.kanban-card .pin-mark{position:absolute;top:-6px;right:-6px;background:#FFC107;color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.15);font-weight:700;}
+
+/* ワンタップ進行ボタン */
+.kanban-card .quick-actions{display:flex;gap:6px;margin-top:11px;padding-top:10px;border-top:0.5px solid #e5e5e7;}
+.kanban-card .quick-btn{flex:1;padding:9px 4px;border-radius:8px;font-size:11px;font-weight:700;border:1px solid #e5e5e7;background:#FAFAF7;color:#515154;transition:all 0.15s;white-space:nowrap;}
+.kanban-card .quick-btn:active{transform:scale(0.95);}
+.kanban-card .quick-btn.next-doing{background:#fff;border-color:#FFC107;color:#A8530A;}
+.kanban-card .quick-btn.next-done{background:#fff;border-color:#34c759;color:#1a9341;}
+.kanban-card .quick-btn.back-todo{background:#FAFAF7;border-color:#e5e5e7;color:#86868b;}
+.kanban-card .quick-btn.primary{background:#B2261C;border-color:#B2261C;color:#fff;}
 
 /* 担当者・紹介者ビュー */
-.member-view{position:absolute;inset:0;overflow-y:auto;padding:16px;-webkit-overflow-scrolling:touch;}
+.member-view{position:absolute;inset:0;overflow-y:auto;padding:16px;-webkit-overflow-scrolling:touch;background:#FAFAF7;}
 .member-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-bottom:16px;}
-.member-card{background:#fff;border:2px solid #FFE4E1;border-radius:14px;padding:14px 10px;text-align:center;cursor:pointer;transition:all 0.15s;}
-.member-card.active{border-color:#F5A3A0;background:#FFF0EE;transform:translateY(-2px);box-shadow:0 3px 12px rgba(245,163,160,0.2);}
-.member-card .avatar-big{width:52px;height:52px;border-radius:50%;color:#fff;font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;box-shadow:0 2px 6px rgba(0,0,0,0.1);}
-.member-card .m-name{font-size:13px;font-weight:700;margin-bottom:2px;}
-.member-card .m-count{font-size:11px;color:#A88;}
-.member-add{background:#fff;border:2px dashed #F5A3A0;border-radius:14px;padding:14px 10px;text-align:center;cursor:pointer;color:#F5A3A0;font-size:13px;font-weight:600;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100px;}
+.member-card{background:#fff;border:1px solid #e5e5e7;border-radius:14px;padding:14px 10px;text-align:center;cursor:pointer;transition:all 0.15s;}
+.member-card.active{border-color:#B2261C;border-width:2px;background:#fff;transform:translateY(-2px);box-shadow:0 3px 12px rgba(178,38,28,0.15);}
+.member-card .avatar-big{width:54px;height:54px;border-radius:50%;color:#fff;font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;box-shadow:0 2px 6px rgba(0,0,0,0.12);}
+.member-card .m-name{font-size:13px;font-weight:700;margin-bottom:3px;color:#1d1d1f;}
+.member-card .m-count{font-size:11px;color:#86868b;font-weight:600;}
+.member-add{background:#fff;border:2px dashed #B2261C;border-radius:14px;padding:14px 10px;text-align:center;cursor:pointer;color:#B2261C;font-size:13px;font-weight:700;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100px;}
 
-.member-detail{background:#fff;border-radius:16px;padding:18px;margin-top:14px;border:1px solid #FFE4E1;}
-.member-detail h3{font-size:16px;font-weight:700;margin-bottom:14px;color:#F5A3A0;display:flex;align-items:center;gap:10px;}
+.member-detail{background:#fff;border-radius:14px;padding:18px;margin-top:14px;border:1px solid #e5e5e7;}
+.member-detail h3{font-size:17px;font-weight:700;margin-bottom:14px;color:#1d1d1f;display:flex;align-items:center;gap:10px;}
 .member-detail .task-group{margin-bottom:16px;}
-.member-detail .group-title{font-size:12px;font-weight:700;color:#8B6B6B;margin-bottom:8px;padding-bottom:5px;border-bottom:2px solid #FFE4E1;}
-.member-detail .m-task{padding:11px;background:#FFF9F7;border-radius:10px;margin-bottom:6px;border-left:4px solid;cursor:pointer;transition:background 0.15s;}
-.member-detail .m-task:active{background:#FFF0EE;}
-.member-detail .m-task .t-title{font-size:13px;font-weight:600;}
-.member-detail .m-task .t-proj{font-size:11px;color:#A88;margin-top:2px;font-weight:600;}
-.member-detail .m-task .t-meta{display:flex;gap:6px;margin-top:5px;font-size:10px;color:#B99;align-items:center;flex-wrap:wrap;}
+.member-detail .group-title{font-size:12px;font-weight:700;color:#B2261C;margin-bottom:8px;padding-bottom:6px;border-bottom:1.5px solid #B2261C;letter-spacing:0.5px;}
+.member-detail .m-task{padding:12px;background:#FAFAF7;border-radius:10px;margin-bottom:6px;border-left:3px solid;cursor:pointer;transition:background 0.15s;border:1px solid #e5e5e7;}
+.member-detail .m-task:active{background:#f5f5f7;}
+.member-detail .m-task .t-title{font-size:14px;font-weight:700;color:#1d1d1f;}
+.member-detail .m-task .t-proj{font-size:11px;color:#515154;margin-top:3px;font-weight:700;}
+.member-detail .m-task .t-meta{display:flex;gap:6px;margin-top:6px;font-size:11px;color:#515154;align-items:center;flex-wrap:wrap;font-weight:600;}
 
 /* 紹介者カード（実績表示） */
-.referrer-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0;padding:12px;background:linear-gradient(135deg, #FFF5F3 0%, #FFE9E5 100%);border-radius:12px;}
+.referrer-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0;padding:16px;background:#fff;border-radius:12px;border:2px solid #B2261C;}
 .ref-stat{text-align:center;}
-.ref-stat .n{font-size:20px;font-weight:800;color:#F5A3A0;}
-.ref-stat .l{font-size:10px;color:#8B6B6B;font-weight:600;margin-top:2px;}
+.ref-stat .n{font-size:24px;font-weight:800;color:#B2261C;letter-spacing:-0.3px;}
+.ref-stat .l{font-size:10px;color:#86868b;font-weight:700;margin-top:3px;letter-spacing:0.5px;}
 .ref-skills{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
-.skill-tag{background:#FFD9D4;color:#A66;padding:4px 10px;border-radius:10px;font-size:11px;font-weight:600;}
+.skill-tag{background:#fff;color:#B2261C;padding:5px 11px;border-radius:8px;font-size:11px;font-weight:700;border:1px solid #B2261C;}
 
 /* 今週ビュー */
-.overview{position:absolute;inset:0;overflow-y:auto;padding:16px;-webkit-overflow-scrolling:touch;}
-.ov-section{background:#fff;border-radius:16px;padding:16px;margin-bottom:12px;border:1px solid #FFE4E1;}
-.ov-section h3{font-size:14px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;color:#6B4848;}
-.ov-section h3 .count-pill{background:linear-gradient(135deg, #F5A3A0, #F7B8B3);color:#fff;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:700;}
-.ov-section.urgent h3{color:#E85D5A;}
-.ov-section.urgent h3 .count-pill{background:linear-gradient(135deg, #E85D5A, #FF8888);}
-.ov-empty{text-align:center;color:#C9A;font-size:13px;padding:22px 0;font-weight:500;}
+.overview{position:absolute;inset:0;overflow-y:auto;padding:16px;-webkit-overflow-scrolling:touch;background:#FAFAF7;}
+.ov-section{background:#fff;border-radius:14px;padding:18px;margin-bottom:12px;border:1px solid #e5e5e7;}
+.ov-section h3{font-size:15px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;color:#1d1d1f;}
+.ov-section h3 .count-pill{background:#FAFAF7;color:#86868b;padding:3px 11px;border-radius:12px;font-size:11px;font-weight:700;border:1px solid #e5e5e7;}
+.ov-section.urgent{border-color:#B2261C;border-width:2px;}
+.ov-section.urgent h3{color:#B2261C;}
+.ov-section.urgent h3 .count-pill{background:#B2261C;color:#fff;border-color:#B2261C;}
+.ov-empty{text-align:center;color:#86868b;font-size:13px;padding:22px 0;font-weight:600;}
 
 /* FAB */
-.fab{position:absolute;bottom:24px;left:16px;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg, #F5A3A0, #F7B8B3);color:#fff;font-size:30px;font-weight:300;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(245,163,160,0.5);z-index:10;transition:all 0.15s;}
+.fab{position:absolute;bottom:26px;left:18px;width:60px;height:60px;border-radius:50%;background:#B2261C;color:#fff;font-size:32px;font-weight:300;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(178,38,28,0.4);z-index:10;transition:all 0.15s;}
 .fab:active{transform:scale(0.92);}
 
 /* モーダル */
-.modal-bg{position:fixed;inset:0;background:rgba(91,58,58,0.45);z-index:100;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(4px);}
+.modal-bg{position:fixed;inset:0;background:rgba(29,29,31,0.5);z-index:100;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(6px);}
 .modal-bg.show{display:flex;}
-.modal{background:#fff;border-radius:24px 24px 0 0;width:100%;max-width:540px;max-height:92vh;overflow-y:auto;padding:22px 22px calc(22px + env(safe-area-inset-bottom));-webkit-overflow-scrolling:touch;}
-.modal h2{font-size:17px;font-weight:700;margin-bottom:16px;text-align:center;color:#6B4848;}
+.modal{background:#fff;border-radius:20px 20px 0 0;width:100%;max-width:540px;max-height:92vh;overflow-y:auto;padding:22px 22px calc(22px + env(safe-area-inset-bottom));-webkit-overflow-scrolling:touch;}
+.modal h2{font-size:18px;font-weight:700;margin-bottom:18px;text-align:center;color:#1d1d1f;letter-spacing:-0.3px;}
 .modal-field{margin-bottom:14px;}
-.modal-field label{display:block;font-size:12px;font-weight:700;color:#8B6B6B;margin-bottom:6px;}
-.modal-field input[type="text"],.modal-field textarea,.modal-field input[type="date"],.modal-field select,.modal-field input[type="number"],.modal-field input[type="url"]{width:100%;padding:12px 14px;border:1.5px solid #FFE4E1;border-radius:12px;background:#FFF9F7;color:#5A3A3A;}
+.modal-field label{display:block;font-size:12px;font-weight:700;color:#515154;margin-bottom:7px;letter-spacing:0.3px;}
+.modal-field input[type="text"],.modal-field textarea,.modal-field input[type="date"],.modal-field select,.modal-field input[type="number"],.modal-field input[type="url"]{width:100%;padding:13px 14px;border:1.5px solid #e5e5e7;border-radius:10px;background:#FAFAF7;color:#1d1d1f;font-weight:600;}
 .modal-field textarea{resize:vertical;min-height:70px;font-size:15px;line-height:1.5;}
-.modal-field input:focus,.modal-field textarea:focus,.modal-field select:focus{outline:none;border-color:#F5A3A0;background:#fff;box-shadow:0 0 0 3px rgba(245,163,160,0.12);}
+.modal-field input:focus,.modal-field textarea:focus,.modal-field select:focus{outline:none;border-color:#B2261C;background:#fff;box-shadow:0 0 0 3px rgba(178,38,28,0.1);}
 .color-picker{display:flex;gap:8px;flex-wrap:wrap;}
 .color-dot{width:38px;height:38px;border-radius:50%;cursor:pointer;border:3px solid transparent;transition:all 0.15s;}
-.color-dot.selected{border-color:#6B4848;transform:scale(1.15);}
+.color-dot.selected{border-color:#1d1d1f;transform:scale(1.15);}
 .status-picker,.contrib-picker{display:flex;gap:6px;}
-.status-btn,.contrib-btn{flex:1;padding:10px 6px;border-radius:10px;background:#FFF5F3;font-size:12px;font-weight:600;border:2px solid transparent;color:#8B6B6B;}
-.status-btn.selected,.contrib-btn.selected{background:linear-gradient(135deg, #F5A3A0, #F7B8B3);color:#fff;border-color:#F5A3A0;}
-.pin-toggle{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#FFFAE8;border-radius:12px;cursor:pointer;border:2px solid #FFF3D1;}
-.pin-toggle.on{background:#FFF3D1;border-color:#FFD966;}
-.pin-toggle .star{font-size:20px;}
-.pin-toggle.on .star{color:#E8B010;}
-.pin-toggle .pin-txt{flex:1;font-size:13px;font-weight:600;color:#6B4848;}
+.status-btn,.contrib-btn{flex:1;padding:11px 6px;border-radius:10px;background:#FAFAF7;font-size:12px;font-weight:700;border:1.5px solid #e5e5e7;color:#515154;}
+.status-btn.selected,.contrib-btn.selected{background:#B2261C;color:#fff;border-color:#B2261C;}
+.pin-toggle{display:flex;align-items:center;gap:10px;padding:13px 15px;background:#FFFAE8;border-radius:10px;cursor:pointer;border:1.5px solid #FFE082;}
+.pin-toggle.on{background:#FFF3B3;border-color:#FFC107;}
+.pin-toggle .star{font-size:20px;font-weight:700;}
+.pin-toggle.on .star{color:#A8530A;}
+.pin-toggle .pin-txt{flex:1;font-size:13px;font-weight:700;color:#1d1d1f;}
 .modal-btns{display:flex;gap:8px;margin-top:20px;}
-.btn{flex:1;padding:14px;border-radius:14px;font-size:15px;font-weight:700;}
-.btn-primary{background:linear-gradient(135deg, #F5A3A0, #F7B8B3);color:#fff;box-shadow:0 3px 10px rgba(245,163,160,0.35);}
-.btn-secondary{background:#FFF5F3;color:#6B4848;}
-.btn-danger{background:#FFE4E1;color:#E85D5A;}
-.link-btn{width:100%;padding:12px;background:linear-gradient(135deg, #FFE9DB, #FFD9C7);color:#A66838;border-radius:12px;font-size:13px;font-weight:700;margin-top:6px;}
+.btn{flex:1;padding:14px;border-radius:12px;font-size:15px;font-weight:700;letter-spacing:0.3px;}
+.btn-primary{background:#B2261C;color:#fff;box-shadow:0 3px 10px rgba(178,38,28,0.25);}
+.btn-secondary{background:#FAFAF7;color:#1d1d1f;border:1px solid #e5e5e7;}
+.btn-danger{background:#FFEBEE;color:#B2261C;border:1px solid #FFCDD2;}
+.link-btn{width:100%;padding:13px;background:#FFF3E0;color:#A8530A;border-radius:10px;font-size:13px;font-weight:700;margin-top:6px;border:1px solid #FFCC80;}
 
 .assignee-picker{display:flex;gap:6px;flex-wrap:wrap;}
-.assignee-chip{padding:7px 13px;border-radius:18px;background:#FFF5F3;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;border:2px solid transparent;color:#6B4848;}
-.assignee-chip .cm{width:20px;height:20px;border-radius:50%;color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:700;}
-.assignee-chip.selected{background:#FFE9E5;border-color:#F5A3A0;color:#A66;}
+.assignee-chip{padding:8px 14px;border-radius:18px;background:#FAFAF7;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;border:1.5px solid #e5e5e7;color:#515154;}
+.assignee-chip .cm{width:22px;height:22px;border-radius:50%;color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;font-weight:700;}
+.assignee-chip.selected{background:#fff;border-color:#B2261C;color:#B2261C;}
 
-.log-item{padding:9px 11px;background:#FFF9F7;border-radius:10px;margin-bottom:5px;font-size:12px;color:#6B4848;}
-.log-item .log-date{color:#A88;font-size:10px;margin-top:2px;}
+.log-item{padding:10px 12px;background:#FAFAF7;border-radius:9px;margin-bottom:5px;font-size:12px;color:#1d1d1f;font-weight:600;border:1px solid #e5e5e7;}
+.log-item .log-date{color:#86868b;font-size:10px;margin-top:3px;font-weight:500;}
 
 .photos{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;}
-.photo{width:64px;height:64px;border-radius:10px;background-size:cover;background-position:center;position:relative;box-shadow:0 2px 6px rgba(0,0,0,0.1);}
-.photo .x{position:absolute;top:-5px;right:-5px;background:#E85D5A;color:#fff;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;cursor:pointer;}
-.photo-add{width:64px;height:64px;border:2px dashed #F5A3A0;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#F5A3A0;font-size:26px;cursor:pointer;background:#FFF9F7;}
+.photo{width:64px;height:64px;border-radius:8px;background-size:cover;background-position:center;position:relative;box-shadow:0 1px 4px rgba(0,0,0,0.1);}
+.photo .x{position:absolute;top:-5px;right:-5px;background:#B2261C;color:#fff;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;cursor:pointer;font-weight:700;}
+.photo-add{width:64px;height:64px;border:2px dashed #B2261C;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#B2261C;font-size:26px;cursor:pointer;background:#FAFAF7;font-weight:700;}
 
-.proj-item{display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;margin-bottom:6px;background:#FFF5F3;}
+.proj-item{display:flex;align-items:center;gap:10px;padding:12px;border-radius:10px;margin-bottom:6px;background:#FAFAF7;border:1px solid #e5e5e7;}
 .proj-item .proj-color{width:20px;height:20px;border-radius:50%;flex-shrink:0;}
-.proj-item .proj-name{flex:1;font-weight:600;font-size:14px;color:#6B4848;}
-.proj-item .proj-sub{font-size:11px;color:#A88;font-weight:500;}
-.proj-item button{padding:6px 10px;font-size:11px;background:#fff;border-radius:8px;color:#8B6B6B;font-weight:600;}
+.proj-item .proj-name{flex:1;font-weight:700;font-size:14px;color:#1d1d1f;}
+.proj-item .proj-sub{font-size:11px;color:#86868b;font-weight:600;}
+.proj-item button{padding:6px 10px;font-size:11px;background:#fff;border-radius:7px;color:#515154;font-weight:700;border:1px solid #e5e5e7;}
 
 /* 同期設定モーダル専用 */
-.sync-status{padding:14px;border-radius:12px;margin-bottom:14px;font-size:13px;}
-.sync-status.ok{background:#E8F5E9;color:#2E7D32;}
-.sync-status.ng{background:#FFEBEE;color:#C62828;}
-.sync-status.warn{background:#FFF8E1;color:#8B6F1F;}
+.sync-status{padding:14px;border-radius:10px;margin-bottom:14px;font-size:13px;font-weight:600;}
+.sync-status.ok{background:#E8F8EA;color:#1a9341;border:1px solid #A3D9B1;}
+.sync-status.ng{background:#FFEBEE;color:#B2261C;border:1px solid #FFCDD2;}
+.sync-status.warn{background:#FFFAE8;color:#A8530A;border:1px solid #FFE082;}
 
 /* 大画面対応 */
 @media (min-width:768px){
@@ -238,11 +248,11 @@ input,textarea,select{font-family:inherit;font-size:16px;-webkit-appearance:none
 
   <!-- ビュー切替 -->
   <div class="view-mode">
-    <button id="btnViewMap" class="active">🗺 マップ</button>
-    <button id="btnViewKanban">📋 ボード</button>
-    <button id="btnViewMember">👥 担当者</button>
-    <button id="btnViewReferrer">🌸 紹介者</button>
-    <button id="btnViewOverview">⭐ 今週</button>
+    <button id="btnViewMap" class="active">マップ</button>
+    <button id="btnViewKanban">ボード</button>
+    <button id="btnViewMember">担当者</button>
+    <button id="btnViewReferrer">紹介者</button>
+    <button id="btnViewOverview">今週</button>
   </div>
 
   <!-- プロジェクトタブ -->
@@ -258,7 +268,7 @@ input,textarea,select{font-family:inherit;font-size:16px;-webkit-appearance:none
         <svg id="svgLinks" viewBox="0 0 3500 3500" preserveAspectRatio="none">
           <defs>
             <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-              <path d="M0,0 L10,5 L0,10" fill="#FFA87A"/>
+              <path d="M0,0 L10,5 L0,10" fill="#FF9500"/>
             </marker>
           </defs>
         </svg>
@@ -309,7 +319,7 @@ input,textarea,select{font-family:inherit;font-size:16px;-webkit-appearance:none
     </div>
 
     <div class="modal-field">
-      <label>🌸 紹介者（お客様を紹介してくれた方・複数人OK）</label>
+      <label>紹介者（お客様を紹介してくれた方・複数人OK）</label>
       <div class="assignee-picker" id="referrerPicker"></div>
     </div>
 
@@ -354,7 +364,7 @@ input,textarea,select{font-family:inherit;font-size:16px;-webkit-appearance:none
     </div>
 
     <div class="modal-field">
-      <label>💰 売上金額（紹介者貢献度計算用・任意）</label>
+      <label>売上金額（紹介者貢献度計算用・任意）</label>
       <input type="number" id="taskRevenue" placeholder="例：500000">
     </div>
 
@@ -369,7 +379,7 @@ input,textarea,select{font-family:inherit;font-size:16px;-webkit-appearance:none
       <div id="logList"></div>
     </div>
 
-    <button class="link-btn" id="btnStartLink" style="display:none;">↗ 他のタスクとつなぐ（依存関係）</button>
+    <button class="link-btn" id="btnStartLink" style="display:none;">他のタスクとつなぐ（依存関係）</button>
 
     <div class="modal-btns">
       <button class="btn btn-secondary" id="btnCancel">キャンセル</button>
@@ -422,7 +432,7 @@ input,textarea,select{font-family:inherit;font-size:16px;-webkit-appearance:none
 <!-- 紹介者モーダル -->
 <div class="modal-bg" id="referrerModal">
   <div class="modal">
-    <h2>🌸 紹介者管理</h2>
+    <h2>紹介者管理</h2>
     <div id="referrerManageList"></div>
     <div class="modal-field" style="margin-top:14px;">
       <label>紹介者名</label>
@@ -469,15 +479,15 @@ input,textarea,select{font-family:inherit;font-size:16px;-webkit-appearance:none
 <!-- 同期設定モーダル -->
 <div class="modal-bg" id="syncModal">
   <div class="modal">
-    <h2>☁️ クラウド同期設定</h2>
+    <h2>クラウド同期設定</h2>
     <div class="sync-status" id="syncStatus">未設定 - 現在はこの端末のみで動作中</div>
 
     <div class="modal-field">
       <label>GAS WebアプリURL</label>
       <input type="url" id="gasUrl" placeholder="https://script.google.com/macros/s/.../exec">
     </div>
-    <div style="font-size:11px;color:#8B6B6B;line-height:1.6;margin-bottom:12px;padding:10px;background:#FFF9F7;border-radius:10px;">
-      💡 <b>設定手順：</b><br>
+    <div style="font-size:12px;color:#333;line-height:1.7;margin-bottom:12px;padding:12px;background:#f5f5f7;border-radius:10px;border:1px solid #e0e0e2;font-weight:600;">
+      <b>設定手順：</b><br>
       1. メニューから「GASコードをコピー」<br>
       2. Googleスプレッドシートを開く<br>
       3. 拡張機能 → Apps Script<br>
@@ -491,8 +501,8 @@ input,textarea,select{font-family:inherit;font-size:16px;-webkit-appearance:none
       <button class="btn btn-primary" id="syncSave">保存</button>
     </div>
     <div style="margin-top:12px;display:flex;gap:8px;">
-      <button class="btn btn-secondary" id="syncPush" style="flex:1;font-size:13px;">⬆️ この端末 → クラウド</button>
-      <button class="btn btn-secondary" id="syncPull" style="flex:1;font-size:13px;">⬇️ クラウド → この端末</button>
+      <button class="btn btn-secondary" id="syncPush" style="flex:1;font-size:13px;">この端末 → クラウド</button>
+      <button class="btn btn-secondary" id="syncPull" style="flex:1;font-size:13px;">クラウド → この端末</button>
     </div>
   </div>
 </div>
@@ -501,11 +511,11 @@ input,textarea,select{font-family:inherit;font-size:16px;-webkit-appearance:none
 <div class="modal-bg" id="menuModal">
   <div class="modal">
     <h2>メニュー</h2>
-    <button class="btn btn-secondary" style="width:100%;margin-bottom:8px;" id="menuSync">☁️ クラウド同期設定</button>
-    <button class="btn btn-secondary" style="width:100%;margin-bottom:8px;" id="menuCopyGAS">📋 GASコードをコピー</button>
+    <button class="btn btn-secondary" style="width:100%;margin-bottom:8px;" id="menuSync">クラウド同期設定</button>
+    <button class="btn btn-secondary" style="width:100%;margin-bottom:8px;" id="menuCopyGAS">GASコードをコピー</button>
     <button class="btn btn-secondary" style="width:100%;margin-bottom:8px;" id="menuProj">プロジェクト管理</button>
     <button class="btn btn-secondary" style="width:100%;margin-bottom:8px;" id="menuMember">担当者管理（社内）</button>
-    <button class="btn btn-secondary" style="width:100%;margin-bottom:8px;" id="menuReferrer">🌸 紹介者管理</button>
+    <button class="btn btn-secondary" style="width:100%;margin-bottom:8px;" id="menuReferrer">紹介者管理</button>
     <button class="btn btn-secondary" style="width:100%;margin-bottom:8px;" id="menuExport">データ書き出し</button>
     <button class="btn btn-secondary" style="width:100%;margin-bottom:8px;" id="menuImport">データ読み込み</button>
     <button class="btn btn-secondary" style="width:100%;margin-bottom:8px;" id="menuClearCache">キャッシュ削除＆再読込</button>
@@ -518,11 +528,11 @@ input,textarea,select{font-family:inherit;font-size:16px;-webkit-appearance:none
 <!-- GASコード表示モーダル -->
 <div class="modal-bg" id="gasCodeModal">
   <div class="modal">
-    <h2>📋 GASコード（コピーして貼り付け）</h2>
-    <div style="font-size:11px;color:#8B6B6B;margin-bottom:10px;line-height:1.6;padding:10px;background:#FFF9F7;border-radius:10px;">
+    <h2>GASコード（コピーして貼り付け）</h2>
+    <div style="font-size:12px;color:#333;margin-bottom:10px;line-height:1.6;padding:10px;background:#f5f5f7;border-radius:10px;border:1px solid #e0e0e2;font-weight:600;">
       下のコードを全選択→コピーして、Googleスプレッドシートの拡張機能→Apps Scriptに貼り付けてください。
     </div>
-    <textarea id="gasCodeText" readonly style="width:100%;height:280px;font-family:monospace;font-size:11px;padding:10px;border:1px solid #FFE4E1;border-radius:10px;background:#FFF9F7;"></textarea>
+    <textarea id="gasCodeText" readonly style="width:100%;height:280px;font-family:monospace;font-size:11px;padding:10px;border:1px solid #d0d0d2;border-radius:10px;background:#fafafa;"></textarea>
     <div class="modal-btns">
       <button class="btn btn-secondary" id="gasCodeClose">閉じる</button>
       <button class="btn btn-primary" id="gasCodeCopy">コピー</button>
@@ -535,17 +545,17 @@ if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then
 
 /* ===== パステル色パレット ===== */
 const COLORS = [
-  {name:'コーラル', main:'#F5A3A0', light:'#FFF0EE', text:'#A66'},
-  {name:'ミント', main:'#A3D9C9', light:'#E8F6F3', text:'#3A7A6C'},
-  {name:'ラベンダー', main:'#C5B3E8', light:'#F0EBFA', text:'#5C4A8C'},
-  {name:'レモン', main:'#F5D980', light:'#FEF8E3', text:'#8B6F1F'},
-  {name:'ピーチ', main:'#FFC4A3', light:'#FFF0E6', text:'#A66838'},
-  {name:'ローズ', main:'#F2B8D1', light:'#FBEDF3', text:'#8C4A66'},
-  {name:'スカイ', main:'#A8CDE8', light:'#E8F1F8', text:'#3A6A8C'},
-  {name:'セージ', main:'#B8D9A8', light:'#EDF5E6', text:'#527A3A'},
+  {name:'ブランド赤', main:'#B2261C', light:'#FCE8E6', text:'#7d1a13'},
+  {name:'ミント', main:'#34c759', light:'#E8F8EA', text:'#1a9341'},
+  {name:'スカイ', main:'#0071e3', light:'#E8F1FD', text:'#0050a8'},
+  {name:'オレンジ', main:'#FF9500', light:'#FFF3E0', text:'#A8530A'},
+  {name:'パープル', main:'#AF52DE', light:'#F5E8FA', text:'#7A2EA0'},
+  {name:'ピンク', main:'#FF2D92', light:'#FFE8F2', text:'#A8005C'},
+  {name:'ティール', main:'#5AC8FA', light:'#E5F4FD', text:'#0080B0'},
+  {name:'グレー', main:'#86868b', light:'#F5F5F7', text:'#1d1d1f'},
 ];
 const CONTRIB_LABELS = {revenue:'売上直結',brand:'ブランディング',system:'仕組み化'};
-const CONTRIB_COLORS = {revenue:'#F5A3A0',brand:'#F2B8D1',system:'#A8CDE8'};
+const CONTRIB_COLORS = {revenue:'#B2261C',brand:'#FF2D92',system:'#0071e3'};
 
 /* ===== データ ===== */
 const STORAGE_KEY = 'visionapp_v2';
@@ -594,8 +604,8 @@ function renderTabs(){
     const c = COLORS[p.color];
     b.innerHTML = `<span class="dot" style="background:${c.main}"></span>${escapeHTML(p.name)}`;
     if(p.id===state.activeProj){
-      b.style.background = `linear-gradient(135deg, ${c.main}, ${c.main}dd)`;
-      b.style.borderColor = c.text;
+      b.style.background = c.main;
+      b.style.borderColor = c.main;
     }
     b.onclick = ()=>{state.activeProj=p.id;saveState();renderAll();};
     el.appendChild(b);
@@ -638,12 +648,12 @@ function renderMindmap(){
   pn.style.top = py+'px';
   pn.style.transform = 'translate(-50%,-50%)';
   const pc = COLORS[proj.color];
-  pn.style.background = `linear-gradient(135deg, ${pc.main}, ${pc.main}dd)`;
+  pn.style.background = pc.main;
   pn.style.color = '#fff';
   pn.style.borderColor = pc.text;
   const done = tasks.filter(t=>t.status==='done').length;
   const rate = tasks.length ? Math.round(done/tasks.length*100) : 0;
-  pn.innerHTML = `<div>${escapeHTML(proj.name)}</div><div style="font-size:10px;opacity:0.9;margin-top:3px;font-weight:500;">${done}/${tasks.length}件 · ${rate}%</div>`;
+  pn.innerHTML = `<div>${escapeHTML(proj.name)}</div><div style="font-size:10px;opacity:0.95;margin-top:3px;font-weight:600;">${done}/${tasks.length}件　${rate}%</div>`;
   wrap.appendChild(pn);
 
   drawLine(svg, vx, vy+60, px, py-30, 'vp', pc.main);
@@ -665,11 +675,11 @@ function renderMindmap(){
     n.style.color = c.text;
 
     let dueHtml = '';
-    if(t.due){const cls = dueClass(t.due);dueHtml = `<div class="due ${cls}">📅 ${formatDue(t.due)}</div>`;}
-    if(t.visit){const cls = dueClass(t.visit);dueHtml += `<div class="due ${cls}">🚗 ${formatDue(t.visit)}</div>`;}
+    if(t.due){const cls = dueClass(t.due);dueHtml = `<div class="due ${cls}">期日 ${formatDue(t.due)}</div>`;}
+    if(t.visit){const cls = dueClass(t.visit);dueHtml += `<div class="due ${cls}">訪問 ${formatDue(t.visit)}</div>`;}
 
     let badges = '';
-    if(t.kpi) badges += `<span class="badge" style="background:${c.main};color:#fff">🎯 ${escapeHTML(t.kpi.slice(0,10))}</span>`;
+    if(t.kpi) badges += `<span class="badge" style="background:${c.main};color:#fff">KPI ${escapeHTML(t.kpi.slice(0,10))}</span>`;
     if(t.contrib) badges += `<span class="badge" style="background:${CONTRIB_COLORS[t.contrib]};color:#fff">${CONTRIB_LABELS[t.contrib]}</span>`;
 
     let assigneesHtml = '';
@@ -682,7 +692,7 @@ function renderMindmap(){
       });
       (t.referrers||[]).slice(0,2).forEach(rid=>{
         const r = state.referrers.find(x=>x.id===rid);
-        if(r){const rc = COLORS[r.color];assigneesHtml += `<div class="avatar" style="background:${rc.main};border:2px dashed #fff" title="紹介:${escapeHTML(r.name)}">🌸</div>`;}
+        if(r){const rc = COLORS[r.color];assigneesHtml += `<div class="avatar" style="background:${rc.main};border:2px dashed #fff;font-size:9px;" title="紹介:${escapeHTML(r.name)}">紹</div>`;}
       });
       assigneesHtml += '</div>';
     }
@@ -716,9 +726,9 @@ function drawLine(svg, x1, y1, x2, y2, type, color){
   const l = document.createElementNS('http://www.w3.org/2000/svg','line');
   l.setAttribute('x1',x1);l.setAttribute('y1',y1);
   l.setAttribute('x2',x2);l.setAttribute('y2',y2);
-  if(type==='vp'){l.setAttribute('stroke',color||'#F5A3A0');l.setAttribute('stroke-width','2.5');l.setAttribute('opacity','0.5');}
-  else if(type==='pt'){l.setAttribute('stroke','#FFD9D4');l.setAttribute('stroke-width','2');}
-  else{l.setAttribute('stroke','#FFA87A');l.setAttribute('stroke-width','2');l.setAttribute('stroke-dasharray','6,4');l.setAttribute('marker-end','url(#arr)');}
+  if(type==='vp'){l.setAttribute('stroke',color||'#B2261C');l.setAttribute('stroke-width','2');l.setAttribute('opacity','0.6');}
+  else if(type==='pt'){l.setAttribute('stroke','#d2d2d7');l.setAttribute('stroke-width','1.5');}
+  else{l.setAttribute('stroke','#FF9500');l.setAttribute('stroke-width','2');l.setAttribute('stroke-dasharray','5,3');l.setAttribute('marker-end','url(#arr)');}
   svg.appendChild(l);
 }
 
@@ -814,7 +824,7 @@ function renderKanban(){
     list.sort((a,b)=>(b.pinned?1:0)-(a.pinned?1:0));
     const c = document.createElement('div');
     c.className = 'kanban-col';
-    c.innerHTML = `<h3><span style="width:10px;height:10px;border-radius:50%;background:${col.color};display:inline-block;"></span>${col.label}<span class="count">${list.length}</span></h3>`;
+    c.innerHTML = `<h3><span class="status-mark" style="background:${col.color};"></span>${col.label}<span class="count">${list.length}</span></h3>`;
     const lst = document.createElement('div');
     lst.className = 'kanban-list';
     list.forEach(t=>{
@@ -824,24 +834,65 @@ function renderKanban(){
       card.style.borderLeftColor = cc.main;
       const memo = t.memo ? `<div class="memo">${escapeHTML(t.memo)}</div>` : '';
       let meta = '';
-      if(t.due) meta += `<span class="${dueClass(t.due)}">📅 ${formatDue(t.due)}</span>`;
-      if(t.visit) meta += `<span class="${dueClass(t.visit)}">🚗 ${formatDue(t.visit)}</span>`;
-      if(t.kpi) meta += `<span class="tag">🎯 ${escapeHTML(t.kpi.slice(0,15))}</span>`;
+      if(t.due) meta += `<span class="${dueClass(t.due)}">期日 ${formatDue(t.due)}</span>`;
+      if(t.visit) meta += `<span class="${dueClass(t.visit)}">訪問 ${formatDue(t.visit)}</span>`;
+      if(t.kpi) meta += `<span class="tag">KPI ${escapeHTML(t.kpi.slice(0,15))}</span>`;
       if(t.contrib) meta += `<span class="tag" style="background:${CONTRIB_COLORS[t.contrib]};color:#fff">${CONTRIB_LABELS[t.contrib]}</span>`;
       if(t.assignees && t.assignees.length){
         meta += '<span style="display:inline-flex;margin-left:2px;">';
         t.assignees.slice(0,3).forEach(aid=>{
           const m = state.members.find(x=>x.id===aid);
-          if(m) meta += `<span class="avatar" style="width:20px;height:20px;font-size:10px;background:${COLORS[m.color].main};color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-left:-3px;border:1.5px solid #fff;font-weight:600;">${initials(m.name)}</span>`;
+          if(m) meta += `<span class="avatar" style="width:22px;height:22px;font-size:10px;background:${COLORS[m.color].main};color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-left:-3px;border:1.5px solid #fff;font-weight:800;">${initials(m.name)}</span>`;
         });
         meta += '</span>';
       }
       if(t.referrers && t.referrers.length){
-        meta += `<span class="tag" style="background:#FFE4E1;color:#A66;">🌸 ${t.referrers.length}名紹介</span>`;
+        meta += `<span class="tag" style="background:#1a1a1a;color:#F5A3A0;font-weight:800;">紹介 ${t.referrers.length}名</span>`;
       }
       const pinHtml = t.pinned ? '<div class="pin-mark">★</div>' : '';
-      card.innerHTML = `${pinHtml}<div>${escapeHTML(t.title)}</div>${memo}${meta?'<div class="meta">'+meta+'</div>':''}`;
-      card.onclick = ()=>openTaskModal(t);
+
+      // ワンタップ進行ボタン
+      let quickActions = '<div class="quick-actions">';
+      const curStatus = t.status || 'todo';
+      if(curStatus === 'todo'){
+        quickActions += `<button class="quick-btn next-doing" data-action="toDoing">→ 進行中へ</button>`;
+        quickActions += `<button class="quick-btn next-done" data-action="toDone">→ 完了へ</button>`;
+      }else if(curStatus === 'doing'){
+        quickActions += `<button class="quick-btn back-todo" data-action="toTodo">← 未着手へ</button>`;
+        quickActions += `<button class="quick-btn next-done" data-action="toDone">→ 完了へ</button>`;
+      }else{
+        quickActions += `<button class="quick-btn back-todo" data-action="toTodo">← 未着手へ</button>`;
+        quickActions += `<button class="quick-btn next-doing" data-action="toDoing">← 進行中へ</button>`;
+      }
+      quickActions += '</div>';
+
+      card.innerHTML = `${pinHtml}<div>${escapeHTML(t.title)}</div>${memo}${meta?'<div class="meta">'+meta+'</div>':''}${quickActions}`;
+
+      // カード本体クリックで編集
+      card.onclick = (e)=>{
+        if(e.target.closest('.quick-btn')) return;
+        openTaskModal(t);
+      };
+
+      // ワンタップボタン
+      card.querySelectorAll('.quick-btn').forEach(btn=>{
+        btn.onclick = (e)=>{
+          e.stopPropagation();
+          const action = btn.dataset.action;
+          const prevStatus = t.status;
+          let newStatus = 'todo';
+          if(action === 'toDoing') newStatus = 'doing';
+          else if(action === 'toDone') newStatus = 'done';
+          else if(action === 'toTodo') newStatus = 'todo';
+          t.status = newStatus;
+          t.updatedAt = Date.now();
+          if(!t.logs) t.logs = [];
+          const statusLabel = {todo:'未着手', doing:'進行中', done:'完了'};
+          t.logs.push({at:Date.now(), action:`${statusLabel[prevStatus||'todo']} → ${statusLabel[newStatus]}`, memberId:(t.assignees&&t.assignees[0])||null});
+          saveState();renderKanban();autoSync();
+        };
+      });
+
       lst.appendChild(card);
     });
     c.appendChild(lst);
@@ -911,11 +962,11 @@ function renderMemberView(){
 
 function renderTaskGroups(detail, tasks){
   const groups = [
-    {key:'overdue', label:'🔴 期限切れ', filter:t=>t.due && dueClass(t.due)==='due-over' && t.status!=='done'},
-    {key:'pinned', label:'⭐ 今週やる', filter:t=>t.pinned && t.status!=='done'},
-    {key:'doing', label:'🟡 進行中', filter:t=>t.status==='doing'},
-    {key:'todo', label:'⚪ 未着手', filter:t=>(t.status||'todo')==='todo' && !t.pinned && !(t.due && dueClass(t.due)==='due-over')},
-    {key:'done', label:'✅ 完了', filter:t=>t.status==='done'}
+    {key:'overdue', label:'期限切れ', filter:t=>t.due && dueClass(t.due)==='due-over' && t.status!=='done'},
+    {key:'pinned', label:'今週やる', filter:t=>t.pinned && t.status!=='done'},
+    {key:'doing', label:'進行中', filter:t=>t.status==='doing'},
+    {key:'todo', label:'未着手', filter:t=>(t.status||'todo')==='todo' && !t.pinned && !(t.due && dueClass(t.due)==='due-over')},
+    {key:'done', label:'完了', filter:t=>t.status==='done'}
   ];
   groups.forEach(g=>{
     const list2 = tasks.filter(g.filter);
@@ -931,10 +982,10 @@ function renderTaskGroups(detail, tasks){
       item.style.borderLeftColor = c.main;
       if(t.status==='done') item.style.opacity = '0.55';
       let meta = '';
-      if(t.due) meta += `<span class="${dueClass(t.due)}">📅 ${formatDue(t.due)}</span>`;
-      if(t.visit) meta += `<span>🚗 ${formatDue(t.visit)}</span>`;
-      if(t.kpi) meta += `<span>🎯 ${escapeHTML(t.kpi.slice(0,12))}</span>`;
-      if(t.revenue) meta += `<span>💰 ${Number(t.revenue).toLocaleString()}円</span>`;
+      if(t.due) meta += `<span class="${dueClass(t.due)}">期日 ${formatDue(t.due)}</span>`;
+      if(t.visit) meta += `<span>訪問 ${formatDue(t.visit)}</span>`;
+      if(t.kpi) meta += `<span>KPI ${escapeHTML(t.kpi.slice(0,12))}</span>`;
+      if(t.revenue) meta += `<span>売上 ${Number(t.revenue).toLocaleString()}円</span>`;
       item.innerHTML = `<div class="t-title">${t.pinned?'★ ':''}${escapeHTML(t.title)}</div><div class="t-proj" style="color:${c.main}">● ${escapeHTML(proj?proj.name:'?')}</div>${meta?'<div class="t-meta">'+meta+'</div>':''}`;
       item.onclick = ()=>openTaskModal(t);
       grp.appendChild(item);
@@ -956,7 +1007,7 @@ function renderReferrerView(){
     const card = document.createElement('div');
     card.className = 'member-card' + (state.activeReferrer===r.id?' active':'');
     const c = COLORS[r.color];
-    card.innerHTML = `<div class="avatar-big" style="background:${c.main}">🌸</div><div class="m-name">${escapeHTML(r.name)}</div><div class="m-count">紹介 ${relatedTasks.length}件<br>${totalRevenue?'💰'+ (totalRevenue>=10000?Math.round(totalRevenue/10000)+'万':totalRevenue):'-'}</div>`;
+    card.innerHTML = `<div class="avatar-big" style="background:${c.main};font-size:16px;">紹</div><div class="m-name">${escapeHTML(r.name)}</div><div class="m-count">紹介 ${relatedTasks.length}件<br>${totalRevenue?(totalRevenue>=10000?Math.round(totalRevenue/10000)+'万円':totalRevenue+'円'):'-'}</div>`;
     card.onclick = ()=>{state.activeReferrer=r.id;saveState();renderReferrerView();};
     list.appendChild(card);
   });
@@ -984,15 +1035,15 @@ function renderReferrerView(){
     detail.className = 'member-detail';
     const c = COLORS[r.color];
     detail.innerHTML = `
-      <h3><div class="avatar-big" style="background:${c.main};width:40px;height:40px;font-size:18px;margin:0;">🌸</div>${escapeHTML(r.name)} 様</h3>
+      <h3><div class="avatar-big" style="background:${c.main};width:40px;height:40px;font-size:14px;margin:0;">紹</div>${escapeHTML(r.name)} 様</h3>
       <div class="referrer-stats">
         <div class="ref-stat"><div class="n">${relatedTasks.length}</div><div class="l">紹介件数</div></div>
         <div class="ref-stat"><div class="n">${completedCount}</div><div class="l">成約件数</div></div>
         <div class="ref-stat"><div class="n">${totalRevenue>=10000?Math.round(totalRevenue/10000)+'万':(totalRevenue||0)}</div><div class="l">売上貢献</div></div>
       </div>
       ${r.skills && r.skills.length ? `<div style="margin-bottom:10px;"><div class="group-title">得意分野</div><div class="ref-skills">${r.skills.map(s=>`<span class="skill-tag">${escapeHTML(s)}</span>`).join('')}</div></div>` : ''}
-      ${r.memo ? `<div style="margin-bottom:12px;"><div class="group-title">メモ</div><div style="font-size:13px;color:#6B4848;line-height:1.6;padding:10px;background:#FFF9F7;border-radius:10px;">${escapeHTML(r.memo)}</div></div>` : ''}
-      ${lastDate ? `<div style="font-size:11px;color:#A88;margin-bottom:10px;">最終活動: ${formatDateTime(lastDate)}</div>` : ''}
+      ${r.memo ? `<div style="margin-bottom:12px;"><div class="group-title">メモ</div><div style="font-size:13px;color:#1a1a1a;line-height:1.6;padding:12px;background:#fafafa;border-radius:10px;border:1px solid #e8e8e8;font-weight:600;">${escapeHTML(r.memo)}</div></div>` : ''}
+      ${lastDate ? `<div style="font-size:11px;color:#666;margin-bottom:10px;font-weight:600;">最終活動: ${formatDateTime(lastDate)}</div>` : ''}
       <div style="display:flex;gap:8px;margin-bottom:14px;">
         <button class="btn btn-secondary" id="editRefBtn" style="flex:1;font-size:12px;padding:10px;">編集</button>
         <button class="btn btn-danger" id="delRefBtn" style="flex:1;font-size:12px;padding:10px;">削除</button>
@@ -1014,7 +1065,7 @@ function renderReferrerView(){
     const hint = document.createElement('div');
     hint.className = 'ov-empty';
     hint.style.padding = '30px 0';
-    hint.innerHTML = '🌸 紹介者を選ぶと詳細が出ます<br><small style="color:#C9A;">タスク登録時に紹介者を指定できます</small>';
+    hint.innerHTML = '紹介者を選ぶと詳細が出ます<br><small style="color:#888;">タスク登録時に紹介者を指定できます</small>';
     el.appendChild(hint);
   }
 }
@@ -1035,7 +1086,7 @@ function renderOverview(){
     const sec = document.createElement('div');
     sec.className = 'ov-section' + (cls?' '+cls:'');
     sec.innerHTML = `<h3>${title}<span class="count-pill">${tasks.length}</span></h3>`;
-    if(tasks.length===0){sec.innerHTML += `<div class="ov-empty">${emptyMsg||'ありません 👍'}</div>`;}
+    if(tasks.length===0){sec.innerHTML += `<div class="ov-empty">${emptyMsg||'ありません'}</div>`;}
     else{
       tasks.forEach(t=>{
         const proj = state.projects.find(p=>p.id===t.projId);
@@ -1043,16 +1094,16 @@ function renderOverview(){
         const item = document.createElement('div');
         item.className = 'm-task';
         item.style.borderLeftColor = c.main;
-        item.style.background = '#FFF9F7';
+        item.style.background = '#fafafa';
         let meta = '';
-        if(t.due) meta += `<span class="${dueClass(t.due)}">📅 ${formatDue(t.due)}</span>`;
-        if(t.visit) meta += `<span class="${dueClass(t.visit)}">🚗 ${formatDue(t.visit)}</span>`;
+        if(t.due) meta += `<span class="${dueClass(t.due)}">期日 ${formatDue(t.due)}</span>`;
+        if(t.visit) meta += `<span class="${dueClass(t.visit)}">訪問 ${formatDue(t.visit)}</span>`;
         let aHtml = '';
         if(t.assignees && t.assignees.length){
           aHtml = '<span style="display:inline-flex;gap:2px;">';
           t.assignees.slice(0,3).forEach(aid=>{
             const m = state.members.find(x=>x.id===aid);
-            if(m) aHtml += `<span class="avatar" style="width:20px;height:20px;font-size:10px;background:${COLORS[m.color].main};color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:600;">${initials(m.name)}</span>`;
+            if(m) aHtml += `<span class="avatar" style="width:22px;height:22px;font-size:10px;background:${COLORS[m.color].main};color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:800;">${initials(m.name)}</span>`;
           });
           aHtml += '</span>';
         }
@@ -1064,10 +1115,10 @@ function renderOverview(){
     return sec;
   };
 
-  el.appendChild(renderSection('🔴 期限切れ', 'urgent', overdue, 'ナイス！期限切れはゼロです'));
-  el.appendChild(renderSection('⭐ 今週やる（ピン留め）', '', pinned, 'ピン留めタスクはまだありません'));
-  el.appendChild(renderSection('📅 今週期限', '', dueSoon, '今週期限のタスクはありません'));
-  el.appendChild(renderSection('🚗 今週の訪問予定', '', visitSoon, '今週の訪問予定はありません'));
+  el.appendChild(renderSection('期限切れ', 'urgent', overdue, '期限切れはゼロです'));
+  el.appendChild(renderSection('今週やる（ピン留め）', '', pinned, 'ピン留めタスクはまだありません'));
+  el.appendChild(renderSection('今週期限', '', dueSoon, '今週期限のタスクはありません'));
+  el.appendChild(renderSection('今週の訪問予定', '', visitSoon, '今週の訪問予定はありません'));
 }
 
 function renderAll(){
@@ -1318,7 +1369,7 @@ function renderReferrerPicker(){
     const selected = selReferrers.includes(r.id);
     chip.className = 'assignee-chip' + (selected?' selected':'');
     const c = COLORS[r.color];
-    chip.innerHTML = `<span class="cm" style="background:${c.main}">🌸</span>${escapeHTML(r.name)}`;
+    chip.innerHTML = `<span class="cm" style="background:${c.main};font-size:10px;">紹</span>${escapeHTML(r.name)}`;
     chip.onclick = ()=>{if(selected) selReferrers = selReferrers.filter(x=>x!==r.id);else selReferrers.push(r.id);renderReferrerPicker();};
     el.appendChild(chip);
   });
@@ -1584,7 +1635,7 @@ function renderReferrerManageList(){
     const cnt = state.tasks.filter(t=>t.referrers && t.referrers.includes(r.id)).length;
     const d = document.createElement('div');d.className = 'proj-item';
     const c = COLORS[r.color];
-    d.innerHTML = `<div style="width:30px;height:30px;background:${c.main};border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;">🌸</div><div style="flex:1;"><div class="proj-name">${escapeHTML(r.name)}</div><div class="proj-sub">紹介 ${cnt}件</div></div>`;
+    d.innerHTML = `<div style="width:30px;height:30px;background:${c.main};border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;">紹</div><div style="flex:1;"><div class="proj-name">${escapeHTML(r.name)}</div><div class="proj-sub">紹介 ${cnt}件</div></div>`;
     const editBtn = document.createElement('button');editBtn.textContent = '編集';
     editBtn.onclick = ()=>{document.getElementById('referrerModal').classList.remove('show');openReferrerModal(r);};
     const delBtn = document.createElement('button');delBtn.textContent = '削除';delBtn.style.color = '#E85D5A';
@@ -1633,7 +1684,7 @@ document.getElementById('visionSave').onclick = ()=>{
   saveState();document.getElementById('visionModal').classList.remove('show');renderAll();autoSync();
 };
 
-/* ===== ☁️ スプレッドシート同期（GAS） ===== */
+/* ===== スプレッドシート同期（GAS） ===== */
 const GAS_CODE = `// ★★ VISION タスク管理アプリ用 GASコード ★★
 // 1. スプレッドシートを開く
 // 2. 拡張機能 → Apps Script
@@ -1734,7 +1785,7 @@ function setSyncStatus(type, msg){
 
 async function syncPush(){
   if(!state.sync.gasUrl){alert('GASのURLが未設定です');return false;}
-  setSyncStatus('warn','⬆️ 送信中...');
+  setSyncStatus('warn','送信中...');
   try{
     const res = await fetch(state.sync.gasUrl, {
       method:'POST', mode:'no-cors',
@@ -1746,7 +1797,7 @@ async function syncPush(){
     });
     state.sync.lastSync = Date.now();
     saveState();
-    setSyncStatus('ok','✅ 送信完了: '+formatDateTime(state.sync.lastSync));
+    setSyncStatus('ok','送信完了: '+formatDateTime(state.sync.lastSync));
     return true;
   }catch(err){
     setSyncStatus('ng','❌ 送信失敗: '+err.message);
@@ -1756,7 +1807,7 @@ async function syncPush(){
 
 async function syncPull(){
   if(!state.sync.gasUrl){alert('GASのURLが未設定です');return false;}
-  setSyncStatus('warn','⬇️ 取得中...');
+  setSyncStatus('warn','取得中...');
   try{
     const res = await fetch(state.sync.gasUrl + (state.sync.gasUrl.includes('?')?'&':'?') + 'action=pull');
     const data = await res.json();
@@ -1771,7 +1822,7 @@ async function syncPull(){
     state.tasks.forEach(t=>{t.x = t.x?Number(t.x):null;t.y = t.y?Number(t.y):null;});
     state.sync.lastSync = Date.now();
     saveState();renderAll();
-    setSyncStatus('ok','✅ 取得完了: '+formatDateTime(state.sync.lastSync));
+    setSyncStatus('ok','取得完了: '+formatDateTime(state.sync.lastSync));
     return true;
   }catch(err){
     setSyncStatus('ng','❌ 取得失敗: '+err.message);
@@ -1785,7 +1836,7 @@ async function syncTest(){
   try{
     const res = await fetch(state.sync.gasUrl + (state.sync.gasUrl.includes('?')?'&':'?') + 'action=ping');
     const txt = await res.text();
-    setSyncStatus('ok','✅ 接続OK: '+txt.slice(0,80));
+    setSyncStatus('ok','接続OK: '+txt.slice(0,80));
   }catch(err){
     setSyncStatus('ng','❌ 接続失敗: '+err.message);
   }
