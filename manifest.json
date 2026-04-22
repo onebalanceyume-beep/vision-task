@@ -1,12 +1,12 @@
 {
   "name": "VISION タスク管理",
   "short_name": "VISION",
-  "description": "ビジョン中心のタスク管理アプリ",
+  "description": "ビジョン中心のタスク管理アプリ（パステル版）",
   "start_url": "./index.html",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#ffffff",
-  "theme_color": "#B2261C",
+  "background_color": "#FFF9F7",
+  "theme_color": "#F5A3A0",
   "icons": [
     {
       "src": "icon-192.png",
